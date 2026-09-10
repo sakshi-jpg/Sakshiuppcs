@@ -1,119 +1,453 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>UPPSC Quiz Master</title>
+
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f5f7fb;color:#172033}
-header{background:#172033;color:white;padding:18px 22px}header h1{margin:0;font-size:24px}header p{margin:5px 0 0;color:#cbd5e1}
-.wrap{max-width:1000px;margin:24px auto;padding:0 16px}.top{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:16px;flex-wrap:wrap}
-.card{background:white;border:1px solid #dbe2ea;border-radius:14px;padding:22px;box-shadow:0 3px 12px rgba(0,0,0,.05)}
-.progress{height:8px;background:#e7ebf1;border-radius:99px;overflow:hidden;margin:12px 0 20px}.bar{height:100%;width:0;background:#356ae6}
-.question{font-size:20px;line-height:1.5;margin:0 0 18px}.options{display:grid;gap:12px}.option{padding:15px;border:2px solid #dbe2ea;background:white;border-radius:11px;text-align:left;cursor:pointer;font-size:16px}.option:hover{border-color:#6b8ff5}.option.selected{border-color:#356ae6;background:#edf2ff}
-.actions{display:flex;justify-content:space-between;gap:10px;margin-top:20px}.btn{border:0;border-radius:10px;padding:12px 18px;font-weight:700;cursor:pointer}.primary{background:#356ae6;color:white}.secondary{background:#e9edf4;color:#172033}.danger{background:#b42318;color:white}
-.nav{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px}.nav button{width:36px;height:36px;border:1px solid #dbe2ea;background:white;border-radius:8px;cursor:pointer}.nav button.answered{background:#e7eefc}.nav button.current{outline:3px solid #9fb5ff}.nav button.review{background:#fff1c2}
-.hidden{display:none!important}.score{font-size:42px;font-weight:800;margin:5px 0}.resultgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}.stat{padding:15px;background:#f6f8fb;border-radius:10px}.reviewrow{border-top:1px solid #e1e6ee;padding:18px 0}.your{font-weight:700}.correct{color:#16794a}.wrong{color:#b42318}.small{color:#657084;font-size:14px}
-@media(max-width:650px){.resultgrid{grid-template-columns:1fr}.question{font-size:18px}.actions .btn{padding:11px 13px}}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f7fb;
+    color: #172033;
+}
+
+header {
+    background: #172033;
+    color: white;
+    padding: 35px 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 34px;
+}
+
+header p {
+    margin: 10px 0 0;
+    color: #d5dbea;
+    font-size: 16px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 35px auto;
+    padding: 0 20px;
+}
+
+.language-box {
+    background: white;
+    padding: 25px;
+    border-radius: 16px;
+    border: 1px solid #dbe2ea;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.language-box h2 {
+    margin-top: 0;
+}
+
+.language-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.language-button {
+    display: inline-block;
+    padding: 13px 25px;
+    border-radius: 10px;
+    background: #eef2f7;
+    color: #172033;
+    text-decoration: none;
+    font-weight: bold;
+    border: 1px solid #dbe2ea;
+}
+
+.language-button.active {
+    background: #356ae6;
+    color: white;
+    border-color: #356ae6;
+}
+
+.section-title {
+    font-size: 27px;
+    margin: 35px 0 18px;
+}
+
+.subject {
+    margin-bottom: 35px;
+}
+
+.subject h2 {
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.quiz-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 18px;
+}
+
+.quiz-card {
+    background: white;
+    border: 1px solid #dbe2ea;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+}
+
+.quiz-card h3 {
+    margin-top: 0;
+    font-size: 21px;
+}
+
+.quiz-card p {
+    color: #5d687a;
+    line-height: 1.5;
+}
+
+.quiz-info {
+    font-size: 14px;
+    color: #667085;
+    margin-bottom: 18px;
+}
+
+.start-button {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    padding: 13px 18px;
+    border-radius: 10px;
+    background: #356ae6;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.start-button:hover {
+    opacity: 0.9;
+}
+
+.coming-soon {
+    opacity: 0.65;
+}
+
+footer {
+    text-align: center;
+    padding: 30px 20px;
+    color: #667085;
+    font-size: 14px;
+}
+
+@media (max-width: 600px) {
+
+    header h1 {
+        font-size: 28px;
+    }
+
+    .container {
+        margin-top: 20px;
+    }
+
+}
+
 </style>
 </head>
+
 <body>
-<header><h1>UPPSC Quiz Master</h1><p>100-question style mock test • Answers are revealed only after submission</p></header>
 
-<div class="wrap">
-<section id="quiz">
-  <div class="top">
-    <div><strong id="counter">Question 1 of 10</strong><div class="small">Polity Demo</div></div>
-    <div><strong id="timer">00:00</strong></div>
-  </div>
-  <div class="progress"><div class="bar" id="bar"></div></div>
-  <div class="card">
-    <p class="question" id="qtext"></p>
-    <div class="options" id="options"></div>
-    <p class="small" id="status">Select one option. Your answer is recorded; the correct answer remains hidden.</p>
-    <div class="actions">
-      <button class="btn secondary" id="prev">← Previous</button>
-      <div>
-        <button class="btn secondary" id="review">☆ Mark for review</button>
-        <button class="btn primary" id="next">Next →</button>
-      </div>
-    </div>
-  </div>
-  <div class="card" style="margin-top:16px">
-    <strong>Question navigator</strong>
-    <div class="nav" id="nav"></div>
-  </div>
-  <div style="text-align:right;margin-top:16px"><button class="btn danger" id="submit">Submit Test</button></div>
-</section>
+<header>
 
-<section id="result" class="hidden">
-  <div class="card">
-    <h2>Test Result</h2>
-    <div class="score" id="score"></div>
-    <div class="resultgrid">
-      <div class="stat"><strong>Correct</strong><br><span id="correct"></span></div>
-      <div class="stat"><strong>Wrong</strong><br><span id="wrong"></span></div>
-      <div class="stat"><strong>Unattempted</strong><br><span id="unattempted"></span></div>
+    <h1>UPPSC QUIZ MASTER</h1>
+
+    <p>
+        Your Personal UPPSC Prelims Practice Hub
+    </p>
+
+</header>
+
+
+<div class="container">
+
+
+    <!-- LANGUAGE -->
+
+    <div class="language-box">
+
+        <h2>Choose Language</h2>
+
+        <div class="language-buttons">
+
+            <a href="#" class="language-button active">
+                🇬🇧 English
+            </a>
+
+            <a href="#" class="language-button">
+                🇮🇳 हिन्दी
+            </a>
+
+        </div>
+
     </div>
-    <button class="btn primary" id="restart">Take Test Again</button>
-  </div>
-  <div class="card" style="margin-top:16px">
-    <h2>Answer Review</h2>
-    <p class="small">Your selected answer is compared with the correct answer only after submission.</p>
-    <div id="reviewList"></div>
-  </div>
-</section>
+
+
+    <!-- POLITY -->
+
+    <h1 class="section-title">
+        📚 Subjects
+    </h1>
+
+
+    <div class="subject">
+
+        <h2>🏛️ Polity</h2>
+
+        <div class="quiz-grid">
+
+
+            <!-- PANCHAYATI RAJ -->
+
+            <div class="quiz-card">
+
+                <h3>
+                    Panchayati Raj & Local Self-Government
+                </h3>
+
+                <p>
+                    Practice questions covering Panchayati Raj,
+                    constitutional provisions, 73rd Amendment,
+                    local self-government and related topics.
+                </p>
+
+                <div class="quiz-info">
+                    📝 48 Questions &nbsp; • &nbsp; 🇬🇧 English
+                </div>
+
+                <a
+                    href="quizzes/english/polity-panchayati-raj.html"
+                    class="start-button"
+                >
+                    START QUIZ →
+                </a>
+
+            </div>
+
+
+            <!-- FUNDAMENTAL RIGHTS -->
+
+            <div class="quiz-card coming-soon">
+
+                <h3>
+                    Fundamental Rights
+                </h3>
+
+                <p>
+                    Constitutional provisions and previous-year
+                    questions on Fundamental Rights.
+                </p>
+
+                <div class="quiz-info">
+                    Coming soon
+                </div>
+
+            </div>
+
+
+            <!-- DPSP -->
+
+            <div class="quiz-card coming-soon">
+
+                <h3>
+                    Directive Principles of State Policy
+                </h3>
+
+                <p>
+                    Practice questions on DPSP and related
+                    constitutional provisions.
+                </p>
+
+                <div class="quiz-info">
+                    Coming soon
+                </div>
+
+            </div>
+
+
+            <!-- PARLIAMENT -->
+
+            <div class="quiz-card coming-soon">
+
+                <h3>
+                    Parliament
+                </h3>
+
+                <p>
+                    Lok Sabha, Rajya Sabha, parliamentary
+                    procedures and constitutional provisions.
+                </p>
+
+                <div class="quiz-info">
+                    Coming soon
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- OTHER SUBJECTS -->
+
+    <div class="subject">
+
+        <h2>📜 History</h2>
+
+        <div class="quiz-grid">
+
+            <div class="quiz-card coming-soon">
+
+                <h3>Ancient India</h3>
+
+                <div class="quiz-info">
+                    Coming soon
+                </div>
+
+            </div>
+
+
+            <div class="quiz-card coming-soon">
+
+                <h3>Medieval India</h3>
+
+                <div class="quiz-info">
+                    Coming soon
+                </div>
+
+            </div>
+
+
+            <div class="quiz-card coming-soon">
+
+                <h3>Modern India</h3>
+
+                <div class="quiz-info">
+                    Coming soon
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="subject">
+
+        <h2>🌍 Geography</h2>
+
+        <div class="quiz-grid">
+
+            <div class="quiz-card coming-soon">
+
+                <h3>Indian Geography</h3>
+
+                <div class="quiz-info">
+                    Coming soon
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="subject">
+
+        <h2>💰 Economy</h2>
+
+        <div class="quiz-grid">
+
+            <div class="quiz-card coming-soon">
+
+                <h3>Indian Economy</h3>
+
+                <div class="quiz-info">
+                    Coming soon
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="subject">
+
+        <h2>🔬 Science</h2>
+
+        <div class="quiz-grid">
+
+            <div class="quiz-card coming-soon">
+
+                <h3>General Science</h3>
+
+                <div class="quiz-info">
+                    Coming soon
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="subject">
+
+        <h2>💻 Computer</h2>
+
+        <div class="quiz-grid">
+
+            <div class="quiz-card coming-soon">
+
+                <h3>Computer Awareness</h3>
+
+                <div class="quiz-info">
+                    Coming soon
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
 </div>
 
-<script>
-const questions=[
-{q:"Article 14 of the Constitution guarantees which Fundamental Right?",o:["Right to Freedom of Religion","Right to Equality","Right against Exploitation","Cultural and Educational Rights"],a:1,e:"Article 14 guarantees equality before law and equal protection of laws."},
-{q:"Which Part of the Constitution contains the Fundamental Rights?",o:["Part II","Part III","Part IV","Part V"],a:1,e:"Fundamental Rights are contained in Part III, Articles 12–35."},
-{q:"Directive Principles of State Policy are contained in which Part?",o:["Part III","Part IV","Part IVA","Part V"],a:1,e:"DPSPs are contained in Part IV, Articles 36–51."},
-{q:"The President of India is elected by which body?",o:["Lok Sabha alone","Rajya Sabha alone","An electoral college","The Supreme Court"],a:2,e:"The President is elected by an electoral college consisting of elected MPs and elected MLAs of the states and eligible Union Territories."},
-{q:"What is the minimum age for membership of the Lok Sabha?",o:["18 years","21 years","25 years","30 years"],a:2,e:"A person must be at least 25 years old to be eligible for election to the Lok Sabha."},
-{q:"Which Article deals with abolition of untouchability?",o:["Article 14","Article 15","Article 17","Article 19"],a:2,e:"Article 17 abolishes untouchability and forbids its practice in any form."},
-{q:"Who is the constitutional head of a state in India?",o:["Chief Minister","Governor","Chief Justice of the High Court","Speaker"],a:1,e:"The Governor is the constitutional head of the state."},
-{q:"Which house of Parliament is a permanent house?",o:["Lok Sabha","Rajya Sabha","Both","Neither"],a:1,e:"Rajya Sabha is not subject to dissolution; one-third of its members retire every two years."},
-{q:"Fundamental Duties were added to the Constitution by which Amendment?",o:["42nd Amendment","44th Amendment","52nd Amendment","73rd Amendment"],a:0,e:"The 42nd Constitutional Amendment Act, 1976 added Fundamental Duties."},
-{q:"Which institution is the final interpreter of the Constitution?",o:["Parliament","Election Commission","Supreme Court","Finance Commission"],a:2,e:"The Supreme Court has the final authority to interpret the Constitution in cases within its jurisdiction."}
-];
 
-let current=0, answers=Array(questions.length).fill(null), marked=Array(questions.length).fill(false), submitted=false, seconds=0;
-const $=id=>document.getElementById(id);
-function render(){
-  const x=questions[current];
-  $("counter").textContent=`Question ${current+1} of ${questions.length}`;
-  $("qtext").textContent=x.q;
-  $("bar").style.width=((current+1)/questions.length*100)+"%";
-  $("options").innerHTML=x.o.map((t,i)=>`<button class="option ${answers[current]===i?'selected':''}" data-i="${i}">${String.fromCharCode(65+i)}. ${t}</button>`).join("");
-  $("status").textContent=answers[current]===null?"Select an option. Your answer is recorded; the correct answer remains hidden.":"Answer recorded. The correct answer remains hidden until you submit.";
-  $("options").querySelectorAll(".option").forEach(b=>b.onclick=()=>{answers[current]=Number(b.dataset.i);render()});
-  $("nav").innerHTML=questions.map((_,i)=>`<button class="${answers[i]!==null?'answered ':''}${marked[i]?'review ':''}${i===current?'current':''}" data-n="${i}">${i+1}</button>`).join("");
-  $("nav").querySelectorAll("button").forEach(b=>b.onclick=()=>{current=Number(b.dataset.n);render()});
-}
-$("prev").onclick=()=>{if(current>0){current--;render()}};
-$("next").onclick=()=>{if(current<questions.length-1){current++;render()}};
-$("review").onclick=()=>{marked[current]=!marked[current];render()};
-$("submit").onclick=()=>{
- if(!confirm("Submit the test? You will then see the correct answers and explanations."))return;
- submitted=true; clearInterval(timer); $("quiz").classList.add("hidden"); $("result").classList.remove("hidden"); showResult();
-};
-function showResult(){
- let c=0,w=0,u=0;
- questions.forEach((x,i)=>{if(answers[i]===null)u++;else if(answers[i]===x.a)c++;else w++});
- $("score").textContent=`${c} / ${questions.length} (${Math.round(c/questions.length*100)}%)`;
- $("correct").textContent=c; $("wrong").textContent=w; $("unattempted").textContent=u;
- $("reviewList").innerHTML=questions.map((x,i)=>{
-   const ya=answers[i]===null?"Not attempted":x.o[answers[i]];
-   const ca=x.o[x.a];
-   const cls=answers[i]===x.a?"correct":"wrong";
-   return `<div class="reviewrow"><strong>Q${i+1}. ${x.q}</strong><p class="${cls} your">Your answer: ${ya}</p><p class="correct"><strong>Correct answer:</strong> ${ca}</p><p>${x.e}</p></div>`;
- }).join("");
-}
-$("restart").onclick=()=>location.reload();
-const timer=setInterval(()=>{seconds++;let m=String(Math.floor(seconds/60)).padStart(2,"0"),s=String(seconds%60).padStart(2,"0");$("timer").textContent=`${m}:${s}`},1000);
-render();
-</script>
+<footer>
+
+    UPPSC Quiz Master • Personal Practice Website
+
+</footer>
+
+
 </body>
 </html>
