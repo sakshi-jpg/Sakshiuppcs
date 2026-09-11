@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UPPSC Environment Quiz — Chapter 1</title>
+<link rel="icon" type="image/png" href="../../../Sakshi_UPPCS_favicon.png">
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f5f7fb;color:#172033}
+header{background:#172033;color:#fff;padding:20px 24px}header h1{margin:0;font-size:25px}header p{margin:6px 0 0;color:#cbd5e1}
+.wrap{max-width:1050px;margin:22px auto;padding:0 20px}.top{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap;margin-bottom:12px}
+.progress{height:8px;background:#e7ebf1;border-radius:99px;overflow:hidden}.bar{height:100%;width:0;background:#356ae6;transition:width .2s}
+.card{background:#fff;border:1px solid #dbe2ea;border-radius:14px;padding:22px;box-shadow:0 3px 12px rgba(0,0,0,.05);margin-bottom:16px}
+.question{font-size:20px;line-height:1.5;margin-bottom:18px}.options{display:grid;gap:10px}
+.opt{border:2px solid #dbe2ea;background:#fff;border-radius:12px;padding:14px 15px;font-size:16px;text-align:left;cursor:pointer}.opt:hover{border-color:#7aa0ff}.opt.selected{border-color:#356ae6;background:#eef4ff}
+.actions{display:flex;justify-content:space-between;gap:10px;margin-top:20px;flex-wrap:wrap}.btn{border:0;border-radius:10px;padding:12px 18px;font-weight:700;cursor:pointer}
+.primary{background:#356ae6;color:#fff}.secondary{background:#e9eef6;color:#172033}.review{background:#f0e6ff;color:#5b21b6}.forgot{background:#fff3c4;color:#7a5800}
+.nav{display:flex;flex-wrap:wrap;gap:7px}.nav button{width:38px;height:38px;border:1px solid #dbe2ea;background:#fff;border-radius:8px;cursor:pointer}
+.nav button.answered{background:#dbe8ff;border-color:#356ae6}.nav button.marked{outline:3px solid #c4a3ff}.nav button.forgot{box-shadow:inset 0 -4px #e5b900}
+.hidden{display:none!important}.score{font-size:42px;font-weight:800}.resultgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.stat{padding:15px;background:#f5f7fb;border-radius:10px}.stat b{font-size:24px;display:block}.correct{border-left:5px solid #16a34a}.wrong{border-left:5px solid #dc2626}
+.unattempted{border-left:5px solid #64748b}.forgotstat{border-left:5px solid #e5b900}.answer{margin-top:10px;padding:12px;border-radius:10px;background:#f7f8fa}
+.your{color:#b91c1c}.right{color:#15803d}@media(max-width:700px){.resultgrid{grid-template-columns:1fr 1fr}.question{font-size:18px}}
+</style>
+</head>
+<body>
+<header><h1>UPPSC Environment Quiz — Chapter 1</h1>
+<p>40 questions • English • Environment • Answers revealed only after submission</p></header>
+<div class="wrap">
+<div id="quiz">
+<div class="top"><div><b id="qnum"></b>
+<div style="color:#64748b">Environment • Chapter 1 • Environment, Sustainable Development & Natural Cycles</div></div>
+<div><b id="timer">⏱️ 10 sec</b></div></div>
+<div class="progress"><div class="bar" id="bar"></div></div>
+<div class="card"><div class="question" id="qtext"></div><div class="options" id="options"></div>
+<div style="color:#64748b;margin-top:12px">Select an option. Your answer is recorded; the correct answer remains hidden.</div>
+<div class="actions"><button class="btn secondary" id="prev">← Previous</button>
+<div><button class="btn review" id="mark">☆ Mark for review</button>
+<button class="btn forgot" id="forget">🧠 I Forgot This</button>
+<button class="btn primary" id="next">Next →</button></div></div></div>
+<div class="card"><h3>Question navigator</h3>
+<div style="color:#64748b;margin-bottom:12px">Blue = answered • Purple outline = marked for review • Yellow bottom = I Forgot This</div>
+<div class="nav" id="nav"></div></div>
+<div class="card"><button class="btn primary" id="submit">Submit Quiz</button></div>
+</div>
+<div id="results" class="hidden"><div class="card"><h2>Quiz Result</h2><div class="score" id="score"></div><p id="summary"></p>
+<div class="resultgrid"><div class="stat correct"><span>Correct</span><b id="correct"></b></div>
+<div class="stat wrong"><span>Wrong</span><b id="wrong"></b></div><div class="stat unattempted"><span>Unattempted</span><b id="unattempted"></b></div>
+<div class="stat forgotstat"><span>I Forgot This</span><b id="forgotcount"></b></div></div></div>
+<div class="card"><h2>Detailed Review</h2><div id="reviewlist"></div></div>
+<div class="card"><button class="btn primary" onclick="location.reload()">Retake Quiz</button></div></div>
+</div>
+<script>
+const questions = [{"q": "Environment refers to:", "opts": ["Only the natural world of land, water, air, plants and animals", "Only the conditions surrounding human beings", "The interacting system of physical, biological and cultural elements", "All of the above"], "ans": 3, "exp": "The source defines environment broadly as the totality of conditions and the interacting physical, biological and cultural elements surrounding and influencing organisms.", "src": "U.P.P.C.S. (Pre) 2006"}, {"q": "According to the Environment (Protection) Act, 1986, environment includes:", "opts": ["Only air and water", "Water, air and land and their inter-relationship with human beings, living creatures, plants, microorganisms and property", "Only biotic components", "Only physical components"], "ans": 1, "exp": "The source states that the Environment (Protection) Act, 1986 includes water, air and land and the inter-relationship among these and living organisms and property.", "src": "Environment (Protection) Act, 1986 — source text"}, {"q": "The word 'environment' is derived from the French word 'Environ', meaning:", "opts": ["To develop", "To encircle or surround", "To protect", "To balance"], "ans": 1, "exp": "The source notes that the word environment is derived from the French word 'Environ', meaning to encircle or surround.", "src": "Chapter text"}, {"q": "Which of the following is a physical/abiotic component of the environment?", "opts": ["Plant", "Animal", "Soil", "Microorganism"], "ans": 2, "exp": "The source lists soil, air and water as physical/abiotic components.", "src": "Chapter text"}, {"q": "Which of the following is a biotic component of the environment?", "opts": ["Air", "Water", "Soil", "Plant"], "ans": 3, "exp": "Biotic components are living components. The source gives plants, humans, animals and microorganisms as examples.", "src": "Chapter text"}, {"q": "Cultural environment mainly includes:", "opts": ["Only rocks and minerals", "Man-made features such as economic, social and political elements", "Only plants and animals", "Only air and water"], "ans": 1, "exp": "The source describes cultural environment in terms of man-made features, including economic, social and political elements.", "src": "Chapter text"}, {"q": "Environment is a composite state of:", "opts": ["Only biotic factors", "Only abiotic factors", "Only physiographic factors", "Biotic, abiotic and related environmental factors"], "ans": 3, "exp": "The source's answer is 'All of the above' when environment is described as a composite state of biotic, physiographic and abiotic factors.", "src": "53rd to 55th B.P.S.C. (Pre) 2011"}, {"q": "Which of the following was NOT listed as a category of environment in the source?", "opts": ["Physical environment", "Cultural environment", "Biological environment", "Operational environment"], "ans": 3, "exp": "The source says environment can generally be classified as physical, cultural and biological. Operational environment is not included in that classification.", "src": "U.P.P.C.S. (Pre) 2020"}, {"q": "Physical environment includes:", "opts": ["Landforms, water bodies, climate, soils, rocks and minerals", "Plants, animals and microorganisms only", "Economic and political elements only", "Only human-made structures"], "ans": 0, "exp": "The source lists landforms, water bodies, climate, soils, rocks and minerals under physical environment.", "src": "U.P.P.C.S. (Pre) 2020"}, {"q": "Biological environment includes:", "opts": ["Landforms and rocks", "Plants, animals and microorganisms", "Economic and political elements", "Climate and minerals only"], "ans": 1, "exp": "The source states that biological environment includes plants, animals and microorganisms.", "src": "U.P.P.C.S. (Pre) 2020"}, {"q": "'Silent Spring' was published in:", "opts": ["1952", "1962", "1972", "1982"], "ans": 1, "exp": "The source states that 'Silent Spring' was an environmental science book published in 1962.", "src": "Chapter text"}, {"q": "'Silent Spring' was written by:", "opts": ["Gro Harlem Brundtland", "Rachel Carson", "Maurice Strong", "Ralph Tyler"], "ans": 1, "exp": "The source identifies Rachel Carson, an American marine biologist and ecologist, as the author of 'Silent Spring'.", "src": "Chapter text"}, {"q": "Sustainable development means development that:", "opts": ["Maximizes present consumption regardless of the future", "Meets present needs without compromising the ability of future generations to meet their own needs", "Stops all economic development", "Uses only industrial resources"], "ans": 1, "exp": "The source gives the Brundtland definition: development that meets the needs of the present without compromising the ability of future generations to meet their own needs.", "src": "Brundtland Report / Our Common Future"}, {"q": "The main objective of sustainable development, according to the source, is:", "opts": ["Maximum exploitation of natural resources", "Conservation and proper management of natural resources and their just use", "Elimination of all industries", "Only poverty reduction"], "ans": 1, "exp": "The source identifies conservation, proper management and just use of natural resources as the main objective.", "src": "Chapter text"}, {"q": "Sustainable development is described as a balanced approach between:", "opts": ["Political development and military development", "Economic development and environmental conservation", "Industrial development and urbanization", "Agriculture and industry only"], "ans": 1, "exp": "The source explicitly describes sustainable development as a balanced approach between economic development and environmental conservation.", "src": "Chapter text"}, {"q": "The Brundtland Report was published in:", "opts": ["1972", "1987", "1989", "1992"], "ans": 1, "exp": "The source table gives 1987 for publication of the Brundtland Commission Report.", "src": "Chapter text / event table"}, {"q": "The World Commission on Environment and Development (WCED) report that popularized the concept of sustainable development was titled:", "opts": ["Our Common Future", "The Limits to Growth", "Agenda 21", "Silent Spring"], "ans": 0, "exp": "The source attributes the development and popularization of the concept to the WCED report titled 'Our Common Future'.", "src": "U.P.P.C.S. (Pre) 2020"}, {"q": "The discussion on sustainable development started after submission of which report to the United Nations in 1987?", "opts": ["First Report on Climate Change", "Our Common Future", "Second Report on Climate Change", "Fifth Assessment Report"], "ans": 1, "exp": "The source question identifies 'Our Common Future' as the report submitted by the WCED in 1987.", "src": "U.P.P.C.S. (Pre) 2020"}, {"q": "Sustainable development is a matter of intergenerational sensitivity with respect to the use of:", "opts": ["Natural resources", "Material resources only", "Industrial resources only", "Social resources only"], "ans": 0, "exp": "The source states that sustainable development is a matter of intergenerational sensitivity in respect of the use of natural resources.", "src": "U.P.P.C.S. (Pre) 2012"}, {"q": "Which event took place in 1972 according to the source table?", "opts": ["Publication of Brundtland Commission Report", "Publication of 'The Limits to Growth' Report", "Rio Earth Summit", "Enforcement of Montreal Protocol"], "ans": 1, "exp": "The event table gives 1972 for publication of 'The Limits to Growth' Report.", "src": "Chapter event table"}, {"q": "The Montreal Protocol was adopted in:", "opts": ["1972", "1987", "1989", "1992"], "ans": 1, "exp": "The source table lists adoption of the Montreal Protocol in September 1987, while the later table notes its enforcement in January 1989.", "src": "Chapter event tables"}, {"q": "The Montreal Protocol was enforced in:", "opts": ["January 1987", "January 1989", "June 1992", "September 1987"], "ans": 1, "exp": "The source's event table lists enforcement of the Montreal Protocol in January 1989.", "src": "Chapter event table"}, {"q": "The Rio Earth Summit was held in:", "opts": ["1972", "1987", "June 1992", "2002"], "ans": 2, "exp": "The source event table lists the Rio Earth Summit in June 1992.", "src": "Chapter event table"}, {"q": "According to the source, sustainable development includes:", "opts": ["Poverty mitigation, conservation of biodiversity and control of environmental pollution", "Only industrial expansion", "Only urban development", "Only forest conservation"], "ans": 0, "exp": "The source explicitly lists poverty mitigation, biodiversity conservation and control of environmental pollution as components of sustainable development.", "src": "Chapter text"}, {"q": "Which of the following is important for sustainable development?", "opts": ["Conservation of biological diversity only", "Prevention and control of pollution only", "Decreasing poverty only", "All of these"], "ans": 3, "exp": "The source answer is 'All of these': biodiversity conservation, pollution prevention/control and poverty reduction are all important for sustainable development.", "src": "U.P. Lower Sub. (Pre) 2004"}, {"q": "Which of the following is NOT one of the Sustainable Development Goals listed in the source?", "opts": ["Zero Hunger", "Gender Equality", "Space Research", "Good Health and Well-being"], "ans": 2, "exp": "The source lists 17 SDGs. Space Research is not one of the listed goals.", "src": "U.P.P.C.S. (Pre) 2023"}, {"q": "The Sustainable Development Goals (SDGs) were adopted by the UN in:", "opts": ["2000", "2010", "2015", "2020"], "ans": 2, "exp": "The source states that the 17 Sustainable Development Goals were adopted by the UN in 2015.", "src": "U.P.P.C.S. (Pre) 2023 / chapter text"}, {"q": "According to the source, the SDGs are intended to be attained by:", "opts": ["2025", "2030", "2035", "2040"], "ans": 1, "exp": "The source states that the 17 SDGs are to be attained by 2030.", "src": "U.P.P.C.S. (Pre) 2023"}, {"q": "Which is SDG 1 according to the source?", "opts": ["Zero Hunger", "No Poverty", "Quality Education", "Gender Equality"], "ans": 1, "exp": "The source lists Goal 1 as No Poverty and Goal 2 as Zero Hunger.", "src": "SDG list in chapter"}, {"q": "Which is SDG 6 according to the source?", "opts": ["Clean Water and Sanitation", "Affordable and Clean Energy", "Climate Action", "Life Below Water"], "ans": 0, "exp": "The source lists Goal 6 as Clean Water and Sanitation.", "src": "SDG list in chapter"}, {"q": "Which is SDG 13 according to the source?", "opts": ["Life on Land", "Climate Action", "Reduced Inequalities", "Partnerships for the Goals"], "ans": 1, "exp": "The source lists Goal 13 as Climate Action.", "src": "SDG list in chapter"}, {"q": "Which is SDG 17 according to the source?", "opts": ["Peace and Justice Strong Institutions", "Partnerships for the Goals", "Life on Land", "Sustainable Cities and Communities"], "ans": 1, "exp": "The source lists Goal 17 as Partnerships for the Goals.", "src": "SDG list in chapter"}, {"q": "The main role of solar radiation in nature, according to the source, is in the:", "opts": ["Carbon cycle", "Hydrogen cycle", "Water cycle", "Nitrogen cycle"], "ans": 2, "exp": "The source states that solar radiation plays the most important role in the water cycle by driving evaporation.", "src": "U.P. Lower Sub. (Spl.) (Pre) 2004 / U.P.P.C.S. (Pre) 2000"}, {"q": "Which process does NOT add carbon dioxide to the carbon cycle according to the source?", "opts": ["Respiration", "Photosynthesis", "Decay of organic matter", "Volcanic action"], "ans": 1, "exp": "The source explains that respiration, decay of organic matter and volcanic action add carbon dioxide, whereas plants use carbon dioxide during photosynthesis.", "src": "I.A.S. (Pre) 2014 / I.A.S. (Pre) 2011"}, {"q": "Which of the following is a natural crystalline allotrope of elemental carbon?", "opts": ["Carbon dioxide", "Carbonate", "Graphite", "Hydrogen carbonate"], "ans": 2, "exp": "The source identifies graphite, fullerene and diamond as three crystalline allotropes of elemental carbon.", "src": "Chapter text"}, {"q": "Humidity is a measure of:", "opts": ["The amount of oxygen in air", "The water vapour content of air or another gas", "The amount of carbon dioxide in soil", "The temperature of clouds"], "ans": 1, "exp": "The source defines humidity as a measure of the water vapour content of air or another gas.", "src": "Chapter text"}, {"q": "Humidity is measured using:", "opts": ["Barometer only", "Hygrometer or psychrometer", "Anemometer only", "Seismograph"], "ans": 1, "exp": "The source states that humidity is measured using a hygrometer or psychrometer.", "src": "Chapter text"}, {"q": "The amount of rain depends on:", "opts": ["Air pressure only", "Humidity in the atmosphere", "Water cycle only", "Temperature only"], "ans": 1, "exp": "The source answer is humidity in the atmosphere. It explains that higher humidity means more water vapour and greater possibility of cloud and rain formation when temperature conditions permit.", "src": "U.P.P.C.S. (Pre) 2017"}, {"q": "The water cycle is essentially a closed system because:", "opts": ["No water moves between Earth systems", "The volume of water in the hydrosphere is essentially the same water that has been present in the Earth system", "Only oceans contain water", "Water cannot evaporate"], "ans": 1, "exp": "The source explains that the water cycle is essentially a closed system, meaning the volume of water in the hydrosphere today is essentially the same water that has always been present in the Earth system.", "src": "Chapter text"}, {"q": "Many transplanted seedlings do not grow because:", "opts": ["The new soil always lacks minerals", "Most root hairs are lost during transplantation", "Leaves always get damaged", "Roots become too long"], "ans": 1, "exp": "The source explains that most root hairs are lost during transplantation. Root hairs collect water and mineral nutrients from the soil.", "src": "I.A.S. (Pre) 2013"}];
+let answers=Array(questions.length).fill(null), marked=Array(questions.length).fill(false),
+    forgot=Array(questions.length).fill(false), current=0, seconds=10, submitted=false, timerInterval=null;
+
+function updateTimer(){
+    const t=document.getElementById('timer');
+    t.textContent='⏱️ '+seconds+' sec';
+    t.style.color=seconds<=3?'#dc2626':'';
+}
+
+function resetTimer(){
+    clearInterval(timerInterval);
+    seconds=10; updateTimer();
+    timerInterval=setInterval(function(){
+        if(submitted){clearInterval(timerInterval);return;}
+        seconds--; updateTimer();
+        if(seconds<=0){
+            clearInterval(timerInterval);
+            if(current<questions.length-1){current++;render();}
+            else{resetTimer();}
+        }
+    },1000);
+}
+
+function selectAnswer(i){if(!submitted){answers[current]=i;render();}}
+
+function render(){
+    if(submitted)return;
+    const q=questions[current];
+    document.getElementById('qnum').textContent='Question '+(current+1)+' of '+questions.length;
+    document.getElementById('qtext').textContent='Q'+(current+1)+'. '+q.q;
+    const options=document.getElementById('options'); options.innerHTML='';
+    q.opts.forEach(function(opt,i){
+        const b=document.createElement('button'); b.type='button'; b.className='opt';
+        if(answers[current]===i)b.classList.add('selected');
+        b.textContent=String.fromCharCode(65+i)+'. '+opt;
+        b.onclick=function(){selectAnswer(i);}; options.appendChild(b);
+    });
+    const prev=document.getElementById('prev'); prev.disabled=current===0; prev.style.opacity=current===0?'0.55':'1';
+    document.getElementById('mark').textContent=marked[current]?'★ Marked for review ✓':'☆ Mark for review';
+    document.getElementById('forget').textContent=forgot[current]?'🧠 Forgot This ✓':'🧠 I Forgot This';
+    document.getElementById('bar').style.width=((current+1)/questions.length*100)+'%';
+    renderNav(); resetTimer();
+}
+
+function renderNav(){
+    const nav=document.getElementById('nav'); nav.innerHTML='';
+    questions.forEach(function(_,i){
+        const b=document.createElement('button'); b.type='button'; b.textContent=i+1;
+        if(answers[i]!==null)b.classList.add('answered'); if(marked[i])b.classList.add('marked'); if(forgot[i])b.classList.add('forgot');
+        if(i===current){b.style.fontWeight='800';b.style.border='2px solid #172033';}
+        b.onclick=function(){current=i;render();}; nav.appendChild(b);
+    });
+}
+
+document.getElementById('prev').onclick=function(){if(current>0){current--;render();}};
+document.getElementById('next').onclick=function(){
+    if(current<questions.length-1){current++;render();}
+    else alert('This is the last question. Please use Submit Quiz when you are ready.');
+};
+document.getElementById('mark').onclick=function(){marked[current]=!marked[current];render();};
+document.getElementById('forget').onclick=function(){forgot[current]=!forgot[current];render();};
+document.getElementById('submit').onclick=submitQuiz;
+
+function submitQuiz(){
+    if(!confirm('Submit the quiz? Answers will be revealed after submission.'))return;
+    submitted=true; clearInterval(timerInterval);
+    let c=0,w=0,u=0;
+    questions.forEach(function(q,i){if(answers[i]===null)u++;else if(answers[i]===q.ans)c++;else w++;});
+    const attempted=c+w, pct=Math.round(c/questions.length*100), accuracy=attempted?Math.round(c/attempted*100):0;
+    document.getElementById('quiz').classList.add('hidden');
+    document.getElementById('results').classList.remove('hidden');
+    document.getElementById('score').textContent=c+' / '+questions.length+' ('+pct+'%)';
+    document.getElementById('summary').textContent='10 seconds per question • Accuracy among attempted: '+accuracy+'%';
+    document.getElementById('correct').textContent=c; document.getElementById('wrong').textContent=w;
+    document.getElementById('unattempted').textContent=u; document.getElementById('forgotcount').textContent=forgot.filter(Boolean).length;
+    const list=document.getElementById('reviewlist'); list.innerHTML='';
+    questions.forEach(function(q,i){
+        const card=document.createElement('div'); card.className='card';
+        const your=answers[i]===null?'Not attempted':q.opts[answers[i]], right=q.opts[q.ans];
+        const status=answers[i]===null?'Unattempted':answers[i]===q.ans?'Correct':'Wrong';
+        card.innerHTML='<h3>Q'+(i+1)+'. '+q.q+'</h3>'+
+        '<div class="answer '+(answers[i]===q.ans?'right':'your')+'"><b>Your answer:</b> '+your+'</div>'+
+        '<div class="answer right"><b>Correct answer:</b> '+right+'</div>'+
+        '<div class="answer"><b>Explanation:</b> '+q.exp+'</div>'+
+        '<div style="color:#64748b;margin-top:8px"><b>Status:</b> '+status+'</div>'+
+        '<div style="color:#64748b;margin-top:8px"><b>Source:</b> '+q.src+'</div>';
+        list.appendChild(card);
+    });
+}
+render();
+</script>
+</body>
+</html>
